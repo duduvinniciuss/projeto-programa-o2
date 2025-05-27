@@ -1,19 +1,29 @@
 package entidade;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Pedido {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private String codigo;
     private String descricao;
-    private double valorTotal;
+    private Double valorTotal;
 
     public Pedido() {}
 
-    public Pedido(String codigo, String descricao, double valorTotal) {
+    public Pedido(String codigo, String descricao, Double valorTotal) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.valorTotal = valorTotal;
     }
 
-    // Getters e setters
+    public Integer getId() {
+        return id;
+    }
 
     public String getCodigo() {
         return codigo;
@@ -31,18 +41,19 @@ public class Pedido {
         this.descricao = descricao;
     }
 
-    public double getValorTotal() {
+    public Double getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(double valorTotal) {
+    public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
     }
 
     @Override
     public String toString() {
         return "Pedido{" +
-                "codigo='" + codigo + '\'' +
+                "id=" + id +
+                ", codigo='" + codigo + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", valorTotal=" + valorTotal +
                 '}';
